@@ -90,7 +90,7 @@ do_install () {
 	bbplain "bindir=${D}${bindir}"
 	if [ -f "${D}${base_sbindir}/start-stop-daemon" ]; then
         	install -m 0755 -d "${D}${sbindir}"
-        	mv "${D}${base_sbindir}/start-stop-daemon" "${D}${sbindir}/start-stop-daemon"
+        	cp "${D}${base_sbindir}/start-stop-daemon" "${D}${sbindir}/start-stop-daemon"
     	fi
 	install -d ${D}${bindir}
 	install -m 0755 ${S}/aesdsocket ${D}${bindir}/
