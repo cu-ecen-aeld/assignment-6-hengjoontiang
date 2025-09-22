@@ -15,6 +15,7 @@ source poky/oe-init-build-env
 #source oe-init-build-env build-qemu-arm64
 export MACHINE="qemuarm64"
 export BB_NUMBER_THREADS="8"
+export EXTRA_OECONF="--with-start-stop-daemon"
 #export IMAGE_INSTALL_append = "aesd-assignments"   
 CONFLINE="MACHINE = \"qemuarm64\""
 
