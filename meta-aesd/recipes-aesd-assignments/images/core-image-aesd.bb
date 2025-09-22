@@ -1,6 +1,14 @@
 inherit core-image
-#CORE_IMAGE_EXTRA_INSTALL += "aesd-assignments"
+MACHINE = "qemuarm64"
+#TARGET_ARCH="arm"
+#TUNE_ARCH="cortexa57"
+
+CORE_IMAGE_EXTRA_INSTALL += "aesd-assignments"
+#CORE_IMAGE_EXTRA_INSTALL += "aesd-assignments_git"
 CORE_IMAGE_EXTRA_INSTALL += "openssh"
+#CORE_IMAGE_EXTRA_INSTALL += "start-stop-daemon"
+CORE_IMAGE_EXTRA_INSTALL += "update-rc.d"
+#IMAGE_INSTALL_append = "aesd-assignments"  
 inherit extrausers
 # See https://docs.yoctoproject.org/singleindex.html#extrausers-bbclass
 # We set a default password of root to match our busybox instance setup

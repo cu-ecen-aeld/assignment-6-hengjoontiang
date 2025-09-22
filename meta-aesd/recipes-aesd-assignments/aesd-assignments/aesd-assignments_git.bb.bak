@@ -1,7 +1,6 @@
 #inherit core-image-aesd
 #inherit externalsrc
 #inherit autotools
-inherit update-rc.d
 MACHINE = "qemuarm64"
 #INHIBIT_PACKAGE_STRIP = "1" 
 #TARGET_ARCH="arm"
@@ -41,21 +40,13 @@ B="${S}"
 # TODO: Add the aesdsocket application and any other files you need to install
 # See https://git.yoctoproject.org/poky/plain/meta/conf/bitbake.conf?h=kirkstone
 FILES:${PN}+="${bindir}/aesdsocket"
-FILES:${PN}+="${bindir}/aesdsocket-start-stop"
-
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
-TARGET_LDFLAGS += "-pthread -lrt -lc"
-TARGET_CC_ARCH += "${LDFLAGS}"
-PACKAGE_ARCH = "${MACHINE_ARCH}"
-#echo "ln -s /sbin/start-stop-daemon /path/to/new/link_name" > ${S}/start-stop-daemon
+TARGET_LDFLAGS+="-pthread -lrt -lc"
 
-INITSCRIPT_PACKAGES="${PN}"
-INITSCRIPT_NAME:${PN}="aesdsocket-start-stop"
 
 do_configure () {
 	:
-	
 }
 #check logfile
 #${WORKDIR}=/home/hengjt/Desktop/Training/Coursera/LinuxSystemProgrammingandIntroductiontoBuildroot/Assignment6/assignment-6-part-2/build/tmp/work/qemuarm64-poky-linux/core-image-aesd/1.0-r
@@ -65,12 +56,12 @@ do_configure () {
 #CC=""
 do_compile () {
         #cd ${S}
-        bbplain "LAYERDIR=${LAYERDIR}"
+        bbplan "LAYERDIR=${LAYERDIR}"
         bbplain "S=${S}"
         bbplain "CROSS_COMPILE=${CROSS_COMPILE}"
 	bbplain "CC=${CC}"
 	oe_runmake clean 
-	oe_runmake all
+	#oe_runmake all
 }
 #check logfile
 #${WORKDIR}/temp/log.do_taskname
@@ -83,19 +74,8 @@ do_install () {
 	# https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-S
 	# See example at https://github.com/cu-ecen-aeld/ecen5013-yocto/blob/ecen5013-hello-world/meta-ecen5013/recipes-ecen5013/ecen5013-hello-world/ecen5013-hello-world_git.bb
 	#cd ${B}
-	#rm ${D}${bindir}
-	bbplain "D=${D}"
-	bbplain "bindir=${D}${bindir}"
-	if [ -f "${D}${base_sbindir}/start-stop-daemon" ]; then
-        	install -m 0755 -d "${D}${sbindir}"
-        	mv "${D}${base_sbindir}/start-stop-daemon" "${D}${sbindir}/start-stop-daemon"
-    	fi
-	install -d ${D}${bindir}
-	install -m 0755 ${S}/aesdsocket ${D}${bindir}/
-	install -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${S}/aesdsocket-start-stop ${D}${sysconfdir}/init.d/
-	#update-rc.d -r ${D}${sysconfdir}/init.d/ S99aesdsocket defaults
-	
+	#install -d ${D}${bindir}
+	#install -m 755 ${B}${bindir}/aesdsocket ${D}${bindir}/aesdsocket 
 }
 
 #log files
