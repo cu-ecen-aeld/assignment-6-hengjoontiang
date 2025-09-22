@@ -52,6 +52,9 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 INITSCRIPT_PACKAGES="${PN}"
 INITSCRIPT_NAME:${PN}="aesdsocket-start-stop"
+EXTRA_OECONF = " \
+    --with-start-stop-daemon"
+
 
 do_configure () {
 	:
