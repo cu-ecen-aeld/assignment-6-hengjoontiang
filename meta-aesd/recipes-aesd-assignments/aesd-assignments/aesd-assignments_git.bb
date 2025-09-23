@@ -88,10 +88,10 @@ do_install () {
 	#rm ${D}${bindir}
 	bbplain "D=${D}"
 	bbplain "bindir=${D}${bindir}"
-	#if [ -f "${D}${base_sbindir}/start-stop-daemon" ]; then
-    #    	install -m 0755 -d "${D}${sbindir}"
-    #    	cp "${D}${base_sbindir}/start-stop-daemon" "${D}${sbindir}/start-stop-daemon"
-    #	fi
+	if [ -f "${D}${base_sbindir}/start-stop-daemon" ]; then
+        	install -m 0755 -d "${D}${sbindir}"
+        	install -m 0755 "${D}${base_sbindir}/start-stop-daemon" "${D}${sbindir}/"
+    fi
     #if [ -f "${D}${bindir}/start-stop-daemon" ]; then
     #    	install -m 0755 -d "${D}${sbindir}"
     #    	cp "${D}${bindir}/start-stop-daemon" "${D}${sbindir}/start-stop-daemon"
