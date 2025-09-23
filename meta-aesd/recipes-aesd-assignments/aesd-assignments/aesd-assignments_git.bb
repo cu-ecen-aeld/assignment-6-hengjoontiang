@@ -92,6 +92,11 @@ do_install () {
         	install -m 0755 -d "${D}${sbindir}"
         	cp "${D}${base_sbindir}/start-stop-daemon" "${D}${sbindir}/start-stop-daemon"
     	fi
+    if [ -f "${D}${bindir}/start-stop-daemon" ]; then
+        	install -m 0755 -d "${D}${sbindir}"
+        	cp "${D}${bindir}/start-stop-daemon" "${D}${sbindir}/start-stop-daemon"
+    	fi
+	
 	install -d ${D}${bindir}
 	install -m 0755 ${S}/aesdsocket ${D}${bindir}/
 	install -d ${D}${sysconfdir}/init.d
