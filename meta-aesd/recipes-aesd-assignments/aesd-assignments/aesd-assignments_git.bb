@@ -42,6 +42,7 @@ B="${S}"
 # See https://git.yoctoproject.org/poky/plain/meta/conf/bitbake.conf?h=kirkstone
 FILES:${PN}+="${bindir}/aesdsocket"
 FILES:${PN}+="${bindir}/aesdsocket-start-stop"
+FILES:${PN}+="${sbindir}/start-stop-daemon"
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
