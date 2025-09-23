@@ -94,7 +94,7 @@ do_install () {
         	install -m 0755 -d "${D}${sbindir}"
         	cp "${D}${base_sbindir}/start-stop-daemon" "${D}${sbindir}/start-stop-daemon"
     fi
-    #if [ -f "${D}${bindir}/start-stop-daemon" ]; then
+    if [ -f "${D}${bindir}/start-stop-daemon" ]; then
 			bbplain "start-stop-daemon found in ${D}${bindir}"
 			
         	install -m 0755 -d "${D}${sbindir}"
