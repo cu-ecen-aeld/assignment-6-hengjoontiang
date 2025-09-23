@@ -26,7 +26,8 @@ PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
 #SRCREV = "f99b82a5d4cb2a22810104f89d4126f52f4dfaba"
 #SRCREV="e586739d429c512ce6ddb830c34e56b8a59ca194"
-SRCREV="ebb0f36bea0aeefb01e8475c418e4c8e3f7da8d5"
+#SRCREV="ebb0f36bea0aeefb01e8475c418e4c8e3f7da8d5"
+SRCREV="e03dfa41d3cd56f171f0efa08bdedd3d2e0c0624"
 #SRCREV = "877ffcc"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
